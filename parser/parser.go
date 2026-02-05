@@ -20,16 +20,16 @@ const (
 	CALL        // myFunction(X)
 )
 
-var precedences = map[token.TokenType]int {
-	token.EQ:		EQUALS,
-	token.NOT_EQ:	EQUALS,
-	token.LT:		LESSGREATER,
-	token.GT:		LESSGREATER,
-	token.PLUS:		SUM,
-	token.MINUS:	SUM,
-	token.SLASH:	PRODUCT,
-	token.ASTERISK:	PRODUCT,
-	token.LPAREN:	CALL,
+var precedences = map[token.TokenType]int{
+	token.EQ:       EQUALS,
+	token.NOT_EQ:   EQUALS,
+	token.LT:       LESSGREATER,
+	token.GT:       LESSGREATER,
+	token.PLUS:     SUM,
+	token.MINUS:    SUM,
+	token.SLASH:    PRODUCT,
+	token.ASTERISK: PRODUCT,
+	token.LPAREN:   CALL,
 }
 
 type (
@@ -87,8 +87,8 @@ func (p *Parser) parseBoolean() ast.Expression {
 
 func (p *Parser) parsePrefixExpression() ast.Expression {
 	expression := &ast.PrefixExpression{
-		Token:		p.curToken,
-		Operator:	p.curToken.Literal,
+		Token:    p.curToken,
+		Operator: p.curToken.Literal,
 	}
 
 	p.nextToken()
@@ -116,9 +116,9 @@ func (p *Parser) curPrecedence() int {
 
 func (p *Parser) parseInfixExpression(left ast.Expression) ast.Expression {
 	expression := &ast.InfixExpression{
-		Token: 		p.curToken,
-		Operator:	p.curToken.Literal,
-		Left:		left,
+		Token:    p.curToken,
+		Operator: p.curToken.Literal,
+		Left:     left,
 	}
 
 	precedence := p.curPrecedence()
@@ -177,7 +177,7 @@ func (p *Parser) parseIfExpression() ast.Expression {
 	}
 
 	expression.Consequence = p.parseBlockStatement()
-	
+
 	if p.peekTokenIs(token.ELSE) {
 		p.nextToken()
 
@@ -437,4 +437,3 @@ func (p *Parser) ParseProgram() *ast.Program {
 
 	return program
 }
-

@@ -240,9 +240,9 @@ func (ie *IfExpression) String() string {
 }
 
 type FunctionLiteral struct {
-	Token		token.Token
-	Parameters	[]*Identifier
-	Body		*BlockStatement
+	Token      token.Token
+	Parameters []*Identifier
+	Body       *BlockStatement
 }
 
 func (fl *FunctionLiteral) expressionNode() {}
@@ -267,9 +267,9 @@ func (fl *FunctionLiteral) String() string {
 }
 
 type CallExpression struct {
-	Token		token.Token
-	Function	Expression
-	Arguments	[]Expression
+	Token     token.Token
+	Function  Expression
+	Arguments []Expression
 }
 
 func (ce *CallExpression) expressionNode() {}
